@@ -9,7 +9,7 @@ AProject_PrincessGameMode::AProject_PrincessGameMode()
 	: Super()
 {
 	// set default pawn class to our Blueprinted character
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnClassFinder(TEXT("/Game/FirstPersonCPP/Blueprints/FirstPersonCharacter"));
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnClassFinder(TEXT("/Game/Project_Princess/Blueprints/FirstPersonCharacter"));
 	DefaultPawnClass = AProject_PrincessCharacter::StaticClass();
 
 	// use our custom HUD class

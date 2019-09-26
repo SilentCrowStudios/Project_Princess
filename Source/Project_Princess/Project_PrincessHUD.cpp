@@ -16,7 +16,7 @@ AProject_PrincessHUD::AProject_PrincessHUD()
 	CrosshairTex = CrosshairTexObj.Object;
 
 	static ConstructorHelpers::FClassFinder<UUserWidget> HUDWidgetObj
-	(TEXT("/Game/FirstPersonCPP/Blueprints/FirstPersonHUD"));
+	(TEXT("/Game/Project_Princess/Blueprints/HUD_UI/FirstPersonHUD"));
 
 	if (HUDWidgetObj.Succeeded())
 	{
