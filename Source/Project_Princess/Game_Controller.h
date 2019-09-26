@@ -8,6 +8,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Project_PrincessGameMode.h"
 #include "Engine/UserDefinedStruct.h"
+#include "MenuPawn.h"
+#include "Project_PrincessCharacter.h"
 #include "Game_Controller.generated.h"
 
 UCLASS()
@@ -117,6 +119,40 @@ public:
 	//Store a Data table reference for Settings
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UStruct* FMyAdvancedSettings;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		AMenuPawn* myMenuPawn;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		APawn* myGamePawn;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool bGamepadInput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float FocalDistance;
+
+	//The following variables are for inventory use only
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		TArray<FName> CollectedJournalTitles;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		TArray<FName> CollectedJournalHeadlines;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		TArray<FName> CollectedJournalContent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		TArray<int> KeyIDs;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		TArray<UStruct*> Inventory;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		TArray<UStruct*> InventoryClueData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		bool bHasFlashlight;
 
 	/*The following series of functions save various variables to the save game state*/
 

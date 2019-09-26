@@ -2,6 +2,7 @@
 
 
 #include "Game_Controller.h"
+#include "UObject/ConstructorHelpers.h"
 
 void AGame_Controller::TraceForInteraction()
 {
@@ -21,15 +22,7 @@ AGame_Controller::AGame_Controller()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	
-	//if (MyGameMode)	//Successfully grabbed game mode
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("Game Mode found. Good Job!"));
-	//}
-	//else
-	//{
-	//	UE_LOG(LogTemp, Warning, TEXT("Game Mode not found. Try again."));
-	//}
+
 
 }
 
@@ -37,16 +30,27 @@ AGame_Controller::AGame_Controller()
 void AGame_Controller::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	if (GetWorld())
 	{
+		//Get the current game mode
 		AProject_PrincessGameMode* MyGameMode = (AProject_PrincessGameMode *)GetWorld()->GetAuthGameMode();
+		
+		//Grab the currently controlled pawn class
+		myGamePawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
+		//Grab the mesh from the character player
+		PlayerCharacterMesh = myGamePawn->GetComponentByClass(TSubclassOf<USkeletalMesh> TEXT("Mesh"));
+		
+		//Testing some stuff
 		UE_LOG(LogTemp, Warning, TEXT("Game Mode found. Good Job!"));
+		UE_LOG(LogTemp, Warning, TEXT("Name of the object is %s"), *myGamePawn->GetName());
 	}
 	else
 	{
+		//Testing some stuff
 		UE_LOG(LogTemp, Warning, TEXT("Game Mode not found. Try again."));
+		UE_LOG(LogTemp, Warning, TEXT("Failed to get name or grab pawn class"));
 	}
 }
 
