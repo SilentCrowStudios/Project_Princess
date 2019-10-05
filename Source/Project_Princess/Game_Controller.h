@@ -10,6 +10,7 @@
 #include "Engine/UserDefinedStruct.h"
 #include "MenuPawn.h"
 #include "Project_PrincessCharacter.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Game_Controller.generated.h"
 
 UCLASS()

@@ -40,7 +40,25 @@ void AGame_Controller::BeginPlay()
 		myGamePawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 		//Grab the mesh from the character player
-		PlayerCharacterMesh = myGamePawn->GetComponentByClass(TSubclassOf<USkeletalMesh> TEXT("Mesh"));
+		if (GetWorld()->ContainsActor(myGamePawn))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Game Pawn Found"));
+
+			//Find the skeletalmeshcomponent that is attached to the player character
+			PlayerCharacterMesh = myGamePawn->FindComponentByClass<USkeletalMeshComponent>();
+			
+			//Test to see if the mesh was found
+			if (PlayerCharacterMesh)
+			{
+				UE_LOG(LogTemp, Warning, TEXT("The name of the skeletal mesh found was: %s"), *myGamePawn->GetName());
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("The name of the skeletal mesh found was not found!"));
+			}
+		}
+		
+		if(FMyAdvancedSettings)
 		
 		//Testing some stuff
 		UE_LOG(LogTemp, Warning, TEXT("Game Mode found. Good Job!"));
